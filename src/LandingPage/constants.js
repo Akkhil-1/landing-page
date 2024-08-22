@@ -63,12 +63,6 @@ import {
       onlyMobile: true,
       to:"/"
     },
-    {
-      id: "5",
-      title: "Sign in",
-      // onlyMobile: true,
-      to:"/adminsignup"
-    },
   ];
   
   export const heroIcons = [homeSmile, file02, searchMd, plusSquare];
