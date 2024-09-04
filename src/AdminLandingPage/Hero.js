@@ -7,7 +7,9 @@ import { useRef } from "react";
 import Generating from "./Generating";
 import Notification from "./Notification";
 import CompanyLogos from "./CompanyLogos";
-import NewButton from "./NewButton";
+import { FaRegUser } from "react-icons/fa";
+import { FaChalkboardUser } from "react-icons/fa6";
+import { NavLink } from "react-router-dom";
 
 const Hero = () => {
   const parallaxRef = useRef(null);
@@ -23,7 +25,7 @@ const Hero = () => {
       <div className="container relative" ref={parallaxRef}>
         <div className="relative z-1 max-w-[62rem] mx-auto text-center mb-[3.875rem] md:mb-20 lg:mb-[6.25rem]">
           <h1 className="h1 mb-6">
-            Transform Bookings and Data into Decisions using {' '}
+            Transform Bookings and Data into Decisions using{" "}
             <span className="inline-block relative">
               WorkWave{" "}
               <img
@@ -36,15 +38,39 @@ const Hero = () => {
             </span>
           </h1>
           <p className="body-1 max-w-3xl mx-auto mb-6 text-n-2 lg:mb-8">
-            Unleash the power of real-time within Workwave. Upgrade your productivity
-            with Workwave.
+            Unleash the power of real-time within Workwave. Upgrade your
+            productivity with Workwave.
           </p>
-          <NewButton>
+          <NavLink to='/userLandingPage'>
+          <button
+            className="px-7 py-4 rounded-lg font-medium w-[150px] inline-flex items-center justify-center tracking-tight bg-[#0F0C17]
+        text-white"
+          >
+            <span className="pr-1">
+              <FaRegUser size={17} />
+            </span>
             User
-          </NewButton>
-          <NewButton>
+          </button>
+
+          </NavLink>
+          <button
+            className="px-7 py-4 rounded-lg font-medium w-[150px] inline-flex items-center justify-center tracking-tight bg-[#0F0C17] ml-7
+        text-white"
+          >
+            <span className="pr-1">
+              <FaChalkboardUser size={17.4} />
+            </span>
             Admin
-          </NewButton>
+          </button>
+
+          {/* <button
+            className="px-7 py-4 rounded-lg w-[100px] font-medium inline-flex items-center justify-center tracking-tight bg-[#0F0C17] text-white ml-7"
+            
+          >
+            <FaRegUser/>
+            onClick={() => navigate("/AdminLandingPage")}
+            Admin
+          </button> */}
         </div>
         <div className="relative max-w-[23rem] mx-auto md:max-w-5xl xl:mb-24">
           <div className="relative z-1 p-0.5 rounded-2xl bg-conic-gradient">

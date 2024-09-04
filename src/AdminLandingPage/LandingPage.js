@@ -1,4 +1,3 @@
-
 import ButtonGradient from "../assets/svg/ButtonGradient";
 import Header from "./Header";
 import Hero from "./Hero";
@@ -9,7 +8,7 @@ import Footer from "./Footer";
 const LandingPage=()=>{
   return(
     <>
-      <div className="pt-[4.75rem] lg:pt-[5.25rem] overflow-hidden">
+      <div className="overflow-hidden">
         <Header/>
         <Hero/>
         <Benefits/>
