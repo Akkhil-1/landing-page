@@ -75,7 +75,7 @@ const Header = () => {
 
             {/* <MenuIcon className='h-5 w-5 md:hidden' /> */}
             <nav className="hidden md:flex gap-10 text-black/75 items-center font-bold">
-              <NavLink to="/">Home</NavLink>
+              <NavLink to="/userLandingPage">Home</NavLink>
               {/* <NavLink to="/BusinessList">Services</NavLink> */}
               <NavLink to="/BusinessList">Services</NavLink>
               <a href="#customer">Testimonials</a>

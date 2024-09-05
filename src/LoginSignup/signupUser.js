@@ -4,6 +4,7 @@ import axios from "axios";
 import HeroSection from "./HeroSectionUser";
 import Toast, { ToastContainerWrapper } from "./Helper/ToastNotify";
 import homeIcon from "./icons8-home-24.png";
+import toast from "react-hot-toast";
 const RegisterFormUser = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -22,20 +23,23 @@ const RegisterFormUser = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!passwordMatch) {
-      Toast.error("Passwords do not match");
+      toast.error("Passwords do not match");
       return;
     }
     console.log(formData);
     try {
       const respo = await axios.post(
         "http://localhost:3001/user/signup",
-        formData
+        formData,
+        { withCredentials: true, credentials: "include" }
       );
       console.log(respo);
-      Toast.success("User Registered successfully");
-      navigate("/");
+      toast.success("Logged in successfully!");
+      setTimeout(() => {
+        navigate("/loginUser");
+      }, 1000);
     } catch (e) {
-      Toast.error("Error registering admin");
+      toast.error("Error registering admin");
     }
   };
   const handleChange = (e) => {
@@ -160,9 +164,9 @@ const RegisterFormUser = () => {
                 placeholder="Confirm Password"
               />
             </div>
-            {!passwordMatch && (
+            {/* {!passwordMatch && (
               <p className="text-red-500 text-sm">Passwords do not match</p>
-            )}
+            )} */}
             <div className="mb-4">
               <label
                 className="block text-sm font-medium text-gray-700"

@@ -3,9 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import HeroSection from "./HeroSectionUser";
 import Toast, { ToastContainerWrapper } from "./Helper/ToastNotify"; // Import Toast and ToastContainerWrapper
-
-
-import homeIcon from "./icons8-home-24.png";
+import toast from "react-hot-toast";
 
 const LoginFormUser = () => {
   const [formData, setFormData] = useState({
@@ -30,16 +28,16 @@ const LoginFormUser = () => {
       const respo = await axios.post(
         // "http://localhost:3001/admin/login",
         "http://localhost:3001/user/login",
-        filteredFormData
+        filteredFormData,
+        { withCredentials: true, credentials: "include" }
       );
       console.log(respo);
-      Toast.success("User Logged In Successfully"); // Replace alert with Toast
-      navigate("/");
+      toast.success("User Logged In Successfully");
+      navigate("/BusinessList");
     } catch (e) {
-      Toast.error("Error logging in"); // Replace alert with Toast
+      toast.error("Error logging in");
     }
   };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
@@ -57,16 +55,14 @@ const LoginFormUser = () => {
             <div
               style={{
                 display: "flex",
-                // alignItems: "left",
-                // justifyContent: "center",
                 height: "auto",
               }}
             >
-              <img
+              {/* <img
                 src={homeIcon}
                 alt="Home Icon"
                 style={{ width: "auto", height: "auto" }}
-              />
+              /> */}
             </div>
           </NavLink>
           <h2 className="text-3xl font-semibold mb-4 text-black">
@@ -78,7 +74,7 @@ const LoginFormUser = () => {
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-bold text-gray-700"
                 htmlFor="email"
               >
                 Email
@@ -96,7 +92,7 @@ const LoginFormUser = () => {
             </div>
             <div className="mb-4">
               <label
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-bold text-gray-900"
                 htmlFor="password"
               >
                 Password

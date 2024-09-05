@@ -94,6 +94,7 @@ import React, { useState, useEffect } from "react";
 import Logo from "../assets/logosaas.png";
 // import { ReactComponent as MenuIcon } from '../assets/menu.svg';
 import { NavLink } from "react-router-dom";
+import Button from "./Button"
 
 const Header = () => {
   const [scroll, setScroll] = useState(false);
@@ -138,9 +139,10 @@ const Header = () => {
               <a href="#customer">Testimonials</a>
               <a href="#help">Help</a>
               <NavLink to="/loginAdmin">
-                <button className="bg-white text-black px-4 py-2 rounded-lg font-medium inline-flex items-center justify-center tracking-tight">
+                {/* <button className="bg-white text-black px-4 py-2 rounded-lg font-medium inline-flex items-center justify-center tracking-tight">
                   Login
-                </button>
+                </button> */}
+                <Button>Login</Button>
               </NavLink>
             </nav>
           </div>

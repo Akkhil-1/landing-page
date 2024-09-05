@@ -10,8 +10,20 @@ import BusinessList from "./Services/BusinessList";
 import BusinessDetails from "./Services/BusinessDetails";
 import BookingForm from "./Services/BookingForm";
 import { ToastContainerWrapper } from "./LoginSignup/Helper/ToastNotify";
+import { Toaster } from "react-hot-toast";
 function App() {
   return (
+    <> 
+      <Toaster
+      position="top-right"
+      toastOptions={{
+        success:{
+          theme:{
+            primary:"#4aed88"
+          }
+        }
+      }}
+      ></Toaster>   
     <BrowserRouter>
       <Routes>
         {/* Admin Landing Page And Login And Signup */}
@@ -37,6 +49,7 @@ function App() {
       </Routes>
       <ToastContainerWrapper />
     </BrowserRouter>
+    </>
   );
 }
 export default App;

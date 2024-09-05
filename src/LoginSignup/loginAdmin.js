@@ -3,7 +3,9 @@ import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import HeroSection from "./HeroSection";
 import Toast, { ToastContainerWrapper } from "./Helper/ToastNotify";
+import toast from 'react-hot-toast'
 import homeIcon from "./icons8-home-24.png";
+
 const LoginForm = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -24,13 +26,14 @@ const LoginForm = () => {
     try {
       const respo = await axios.post(
         "http://localhost:3001/admin/login",
-        filteredFormData
+        filteredFormData,
+        { withCredentials: true, credentials: "include" }
       );
       console.log(respo);
-      Toast.success("Logged in successfully!");
-      navigate("/AdminLandingPage");
+      toast.success("Logged in successfully!");
+      navigate("/");
     } catch (e) {
-      Toast.error("Invalid email or password");
+      toast.error("Invalid email or password");
     }
   };
 
@@ -113,7 +116,7 @@ const LoginForm = () => {
             </div>
             <button
               type="submit"
-              className="w-full bg-black text-white py-2 rounded-md"
+              className="w-full bg-indigo-600  text-white py-2 rounded-md"
             >
               Log in
             </button>

@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import HeroSection from "./HeroSection";
 import Toast, { ToastContainerWrapper } from "./Helper/ToastNotify"; // Import Toast and ToastContainerWrapper
+import toast from "react-hot-toast";
 import homeIcon from "./icons8-home-24.png";
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
@@ -19,23 +20,25 @@ const RegisterForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!passwordMatch) {
-      Toast.error("Passwords do not match"); // Replace alert with Toast
+      toast.error("Passwords do not match");
       return;
     }
     console.log(formData);
     try {
       const respo = await axios.post(
         "http://localhost:3001/admin/signup",
-        formData
+        formData,
+        { withCredentials: true, credentials: "include" }
       );
       console.log(respo);
-      Toast.success("Admin Registered successfully"); // Replace alert with Toast
-      navigate("/AdminLandingPage");
+      toast.success("Registered Successfully");
+      setTimeout(() => {
+        navigate("/loginAdmin");
+      }, 1000);
     } catch (e) {
-      Toast.error("Error registering admin"); // Replace alert with Toast
+      toast.error("Please Enter the Correct details!");
     }
   };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(() => ({
@@ -56,7 +59,7 @@ const RegisterForm = () => {
       <HeroSection />
       <div className="w-1/2 flex items-center justify-center">
         <div className="w-full max-w-md p-8">
-          <NavLink to="/" className="text-gray-600 mb-8">
+          <NavLink to={"/loginAdmin"} className="text-gray-600 mb-8">
             <div
               style={{
                 display: "flex",
@@ -137,9 +140,9 @@ const RegisterForm = () => {
                 placeholder="Confirm Password"
               />
             </div>
-            {!passwordMatch && (
+            {/* {!passwordMatch && (
               <p className="text-red-500 text-sm">Passwords do not match</p>
-            )}
+            )} */}
             <div className="mb-4">
               <input
                 type="text"
@@ -166,7 +169,7 @@ const RegisterForm = () => {
             </div>
             <button
               type="submit"
-              className="w-full bg-black text-white py-2 rounded-md"
+              className="w-full  bg-indigo-600  text-white  py-2 rounded-md"
             >
               Register
             </button>
