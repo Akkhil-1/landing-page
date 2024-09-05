@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import purple from "./purple.png";
+import pic from "./pic.jpg";
 import axios from "axios";
 import Toast from "../LoginSignup/Helper/ToastNotify";
 import toast from "react-hot-toast";
@@ -43,7 +43,7 @@ function BookingForm() {
       <div className="bg-white p-6 rounded-lg border-4 border-white max-w-3xl w-full mt-3 overflow-hidden shadow-lg">
         <div className="mb-5">
           <img
-            src={purple}
+            src={pic}
             alt="Booking"
             className="w-full h-64 rounded-t-lg object-cover"
           />

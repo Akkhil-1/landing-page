@@ -11,6 +11,7 @@ import BusinessDetails from "./Services/BusinessDetails";
 import BookingForm from "./Services/BookingForm";
 import { ToastContainerWrapper } from "./LoginSignup/Helper/ToastNotify";
 import { Toaster } from "react-hot-toast";
+import ForgotPassword from "./ForgotPassword/ForgotPassword";
 function App() {
   return (
     <> 
@@ -45,6 +46,7 @@ function App() {
         <Route path="/businessForm" element={<BusinessForm/>}/>
 
         {/* Forgot Password */}
+        <Route path="/forgot" element={<ForgotPassword/>}/>
 
       </Routes>
       <ToastContainerWrapper />

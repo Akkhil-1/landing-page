@@ -2,14 +2,41 @@ import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import HeroSection from "./HeroSectionUser";
-import Toast, { ToastContainerWrapper } from "./Helper/ToastNotify"; // Import Toast and ToastContainerWrapper
+import Toast, { ToastContainerWrapper } from "./Helper/ToastNotify";
 import toast from "react-hot-toast";
-
 const LoginFormUser = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+  const otpPage = async () => {
+    const { email } = formData;
+
+    if (!email) {
+      toast.error("Please enter your email first.");
+      return;
+    }
+
+    console.log(email);
+
+    try {
+      const response = await axios.post("http://localhost:3001/otp/sendOtp", {
+        email,
+      });
+      toast.success("OTP sent successfully!");
+      navigate("/forgot", { state: { email } });
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        toast.error("User not found", {
+          duration: 5000,
+        });
+      } else {
+        toast.error("Failed to send OTP", {
+          duration: 5000,
+        });
+      }
+    }
+  };
 
   const navigate = useNavigate();
 
@@ -45,7 +72,6 @@ const LoginFormUser = () => {
       [name]: value,
     }));
   };
-
   return (
     <div className="flex min-h-screen">
       <HeroSection />
@@ -109,7 +135,10 @@ const LoginFormUser = () => {
               />
             </div>
             <div className="flex items-center justify-between mb-6">
-              <div className="text-sm text-indigo-600 hover:text-indigo-500">
+              <div
+                className="text-sm text-indigo-600 hover:text-indigo-500 cursor-pointer"
+                onClick={otpPage}
+              >
                 Forgot Password?
               </div>
             </div>
