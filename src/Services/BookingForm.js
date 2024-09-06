@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import pic from "./pic.jpg";
 import axios from "axios";
-import Toast from "../LoginSignup/Helper/ToastNotify";
 import toast from "react-hot-toast";
 function BookingForm() {
   const [formData, setFormData] = useState({
@@ -25,7 +24,6 @@ function BookingForm() {
       );
       console.log(respo);
       toast.success("Booking Done");
-      alert("Booking Done")
     } catch (e) {
       toast.error("Error");
     }

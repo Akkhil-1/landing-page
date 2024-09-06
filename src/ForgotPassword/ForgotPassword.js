@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
-import img from './2.avif'
+import img from "./2.avif";
 import toast from "react-hot-toast";
 import axios from "axios";
 
@@ -42,19 +42,19 @@ const ForgotPassword = () => {
   };
 
   const handleInputEnter = (e) => {
-      if (e.code === "Enter") {
-        const input = e.target.value;
-        const otpRegex = /^[0-9]{6}$/;
+    if (e.code === "Enter") {
+      const input = e.target.value;
+      const otpRegex = /^[0-9]{6}$/;
 
-        if (otpRegex.test(input)) {
-          console.log("Valid OTP:", input);
-          toast.success("Valid Otp!");
-        } else {
-          console.log("Invalid OTP");
-          toast.success("InValid Otp!");
-        }
+      if (otpRegex.test(input)) {
+        console.log("Valid OTP:", input);
+        toast.success("Valid Otp!");
+      } else {
+        console.log("Invalid OTP");
+        toast.success("InValid Otp!");
       }
-    };
+    }
+  };
   return (
     <>
       <div className="flex h-screen items-center justify-center p-4 bg-white rounded-lg">
@@ -93,7 +93,7 @@ const ForgotPassword = () => {
                 value={newPassword}
                 onKeyUp={handleInputEnter}
               />
-            <input
+              <input
                 type="password"
                 className="w-full p-4 text-black bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Confirm Password"
